@@ -16,7 +16,7 @@ export class SingleStringMathTex extends VMobject {
   constructor(tex: string, opts: {
     fillColor?: string;
   } = {}) {
-    super();
+    super(opts);
     this.fillColor = opts.fillColor ?? BLACK;
     this.tex = tex;
   }
@@ -29,8 +29,9 @@ export class SingleStringMathTex extends VMobject {
     // render
     const span = document.createElement("span");
     Object.assign(span.style, {
-      color: this.fillColor,
-      fontSize: "21em"
+      // color: this.fillColor,
+      color: WHITE,
+      fontSize: "3em"
     });
     katex.render(this.tex, span);
     div.appendChild(span);
@@ -86,6 +87,5 @@ export class Tex extends Mobject {
       left: `calc(50% - ${rect.width / prect.width / 2 * 100}% + ${center[0] * 10}%)`,
       top: `calc(50% - ${rect.height / prect.height / 2 * 100}% + ${-center[1] * 10}%)`
     });
-  }
   }
 }
